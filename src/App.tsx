@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {useState} from "react";
+import UserForm from "./components/UserForm";
 
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+type User={
+  age:string;
+  gender:string;
+  preferences:{
+    bottom:boolean;
+    shoe:boolean;
+    top:boolean;
+    hat:boolean
+
+  };
+};
+
+function App(){
+  const [weather,setWeather]=useState(null);
+  const[user,setUser]=useState(null);
+
+
+  async function getWeather(){
+    //alert("Weather");
+    const f=await fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,wind_speed_10m,wind_direction_10m,wind_gusts_10m,rain,precipitation,showers,snowfall,weather_code,cloud_cover,pressure_msl,surface_pressure");
+  
+    const d=await f.json();
+    setWeather(d.current);
 }
+function saveInfo(d:User){
+      setUser(d);
+      getWeather();
+    }
 
-export default App
+    return(
+      <div className="center">
+        <h1>What do you want to wear today?</h1>
+       <UserForm onSubmit={saveInfo}/>
+
+      </div>
+
+    );
+  }
+
+export default App;
+
+
