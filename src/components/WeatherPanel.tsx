@@ -10,7 +10,6 @@ import { mapWeatherCodeToDescription } from "../utils/mapWeatherCode";
 
 const WeatherPanelContainer = styled.section`
   margin-top: 1.5rem;
-  align-item:center;
   display: flex;
   flex-direction: column;
   align-items: center;

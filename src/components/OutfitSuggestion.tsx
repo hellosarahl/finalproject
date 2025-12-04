@@ -7,7 +7,6 @@ import type { Weather } from "../interfaces/Weather";
 
 const OutfitContainer = styled.section`
   margin-top: 1.5rem;
-  align-item:center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,7 +122,12 @@ function OutfitSuggestion({ user, weather }: OutfitSuggestionProps) {
 
     let genderComment = "";
     if (gender) {
-        genderComment = `These pieces are unisex, so you can adapt them to your own ${gender.toLowerCase()} style.`;
+        if (gender.toLowerCase() === "male" || gender.toLowerCase() === "female") {
+            genderComment = `These pieces are unisex, so you can adapt them to your own ${gender.toLowerCase()} style.`;
+        }
+        else {
+            genderComment = `These pieces are unisex, so you can adapt them to your own style.`;
+        }
     }
 
     // --- 4. Build final text ---
