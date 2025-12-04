@@ -1,3 +1,8 @@
+//Component:User Form
+//Author: Sarah Lam
+//Description: Collects the user information such as name, age, gender
+
+
 import {useState} from "react";
 import styled from "styled-components";
 import type { User } from "../interfaces/User";
@@ -68,6 +73,7 @@ const SubmitButton = styled.button`
 interface UserFormProps {
     onSubmit: (user: User) => void;
 }
+// userform send info to the app component after user submits the form
 function UserForm({onSubmit}:UserFormProps){
 
   const[hat,setHat]=useState(false);
@@ -78,6 +84,7 @@ function UserForm({onSubmit}:UserFormProps){
   const[gender,setGender]=useState("");
 
 
+  //run for form after submitted
   function submit(f){
     f.preventDefault();
 
@@ -95,7 +102,7 @@ function UserForm({onSubmit}:UserFormProps){
     onSubmit(val);
 }
 
-
+// rendering of the user input
 
     return (
         <FormContainer onSubmit={submit}>
@@ -157,6 +164,6 @@ function UserForm({onSubmit}:UserFormProps){
     );
 
 }
-      
+//export for components to be used in App      
 export default UserForm;
 

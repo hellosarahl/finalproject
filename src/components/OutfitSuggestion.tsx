@@ -7,6 +7,12 @@ import type { Weather } from "../interfaces/Weather";
 
 const OutfitContainer = styled.section`
   margin-top: 1.5rem;
+  align-item:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: cursive, "Arial";
+
 `;
 
 type OutfitSuggestionProps = {
