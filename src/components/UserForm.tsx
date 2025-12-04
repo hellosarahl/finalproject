@@ -1,9 +1,74 @@
-
-
 import {useState} from "react";
+import styled from "styled-components";
+import type { User } from "../interfaces/User";
+
+// Container for the whole form
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: cursive;
+`;
+
+// heading inside the form
+const SectionTitle = styled.h2`
+  margin-bottom: 0.8rem;
+`;
+
+// Label-like text above inputs
+const FieldLabel = styled.p`
+  margin: 0.3rem 0;
+`;
+
+// Text input for age
+const TextInput = styled.input`
+  padding: 0.2rem 0.4rem;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+  border: 1px solid #555;
+  color: white;
+`;
+
+// Select for gender
+const StyledSelect = styled.select`
+  padding: 0.2rem 0.4rem;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+  border: 1px solid #555;
+  color: white;
+`;
+
+// One row for each checkbox
+const CheckboxRow = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+`;
+
+// Submit button
+const SubmitButton = styled.button`
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin-top: 0.7rem;
+
+  &:hover {
+    border-color: #646cff;
+  }
+`;
 
 
-function UserForm({onSubmit}:any){
+interface UserFormProps {
+    onSubmit: (user: User) => void;
+}
+function UserForm({onSubmit}:UserFormProps){
 
   const[hat,setHat]=useState(false);
    const[shoe,setShoe]=useState(false);
@@ -32,39 +97,65 @@ function UserForm({onSubmit}:any){
 
 
 
-return(
-  <form onSubmit= {submit}>
-    <h1>Your information!</h1>
+    return (
+        <FormContainer onSubmit={submit}>
+            <SectionTitle>Your information!</SectionTitle>
 
-    <p>Your Age</p>
-    <input value={age} onChange={(f)=>setAge(f.target.value)}
-    />
-    <p>Your Gender</p>
-    <select onChange={(f)=>setGender(f.target.value)}>
-      <option value="Female">Female</option>
-      <option value="Male">Male</option>
-      <option value="Other">Other</option>
-    </select>
+            <FieldLabel>Your Age</FieldLabel>
+            <TextInput
+                value={age}
+                onChange={(f) => setAge(f.target.value)}
+            />
 
+            <FieldLabel>Your Gender</FieldLabel>
+            <StyledSelect onChange={(f) => setGender(f.target.value)}>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+            </StyledSelect>
 
-    <p>Decide what to wear!</p>
-    <div>
-      <input type="checkbox" onChange={()=>setHat(!hat)}/>Hat 🧢
-    </div>
-    <div>
-      <input type="checkbox" onChange={()=>setBottom(!bottom)}/>Bottom 👖
-    </div>
-    <div>
-      <input type="checkbox" onChange={()=>setTop(!top)}/>Top 👕
-    </div>
-    <div>
-      <input type="checkbox" onChange={()=>setShoe(!shoe)}/>Shoe 👟
-    </div>
-    <button type="submit">Your fit</button>
-   
+            <FieldLabel>Decide what to wear!</FieldLabel>
 
-</form>
-);
+            <CheckboxRow>
+                <input
+                    type="checkbox"
+                    checked={hat}
+                    onChange={() => setHat(!hat)}
+                />
+                Hat 🧢
+            </CheckboxRow>
+
+            <CheckboxRow>
+                <input
+                    type="checkbox"
+                    checked={bottom}
+                    onChange={() => setBottom(!bottom)}
+                />
+                Bottom 👖
+            </CheckboxRow>
+
+            <CheckboxRow>
+                <input
+                    type="checkbox"
+                    checked={top}
+                    onChange={() => setTop(!top)}
+                />
+                Top 👕
+            </CheckboxRow>
+
+            <CheckboxRow>
+                <input
+                    type="checkbox"
+                    checked={shoe}
+                    onChange={() => setShoe(!shoe)}
+                />
+                Shoe 👟
+            </CheckboxRow>
+
+            <SubmitButton type="submit">Your fit</SubmitButton>
+        </FormContainer>
+    );
+
 }
       
 export default UserForm;
