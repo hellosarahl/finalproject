@@ -9,63 +9,83 @@ import type { User } from "../interfaces/User";
 
 // Container for the whole form
 const FormContainer = styled.form`
+  width: 70vw;                    /* use most of the width */
+  max-width: 900px;               /* optional safety cap */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  font-family: cursive;
+  gap: 1vh;
+  padding: 3vh 4vw;
+  margin-bottom: 4vh;
+  background-color: rgba(15, 23, 42, 0.85); 
+  border-radius: 2vh;
+  box-shadow: 0 0 2vh rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
 `;
 
 // heading inside the form
 const SectionTitle = styled.h2`
-  margin-bottom: 0.8rem;
+  font-size: calc(1.8vw + 1.4vh);
+  margin: 0 0 2vh;
+  color: #e5e7eb;
 `;
 
 // Label-like text above inputs
 const FieldLabel = styled.p`
-  margin: 0.3rem 0;
+  margin: 0.5vh 0;
+  font-size: calc(0.9vw + 0.9vh);
 `;
 
 // Text input for age
 const TextInput = styled.input`
-  padding: 0.2rem 0.4rem;
-  background-color: #1a1a1a;
-  border-radius: 4px;
-  border: 1px solid #555;
-  color: white;
+  width: 40vw;
+  max-width: 320px;
+  padding: 1vh 1vw;
+  background-color: #020617;
+  border-radius: 1vh;
+  border: 0.2vh solid #4b5563;
+  color: #e5e7eb;
+  font-size: calc(0.9vw + 0.8vh);
+  box-sizing: border-box;
 `;
 
 // Select for gender
 const StyledSelect = styled.select`
-  padding: 0.2rem 0.4rem;
-  background-color: #1a1a1a;
-  border-radius: 4px;
-  border: 1px solid #555;
-  color: white;
+  width: 40vw;
+  max-width: 320px;
+  padding: 1vh 1vw;
+  background-color: #020617;
+  border-radius: 1vh;
+  border: 0.2vh solid #4b5563;
+  color: #e5e7eb;
+  font-size: calc(0.9vw + 0.8vh);
+  box-sizing: border-box;
 `;
 
 // One row for each checkbox
 const CheckboxRow = styled.label`
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.6vw;
+  font-size: calc(0.9vw + 0.8vh);
 `;
 
 // Submit button
 const SubmitButton = styled.button`
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  margin-top: 2vh;
+  padding: 1.2vh 2.4vw;
+  border-radius: 1.5vh;
+  border: 0.2vh solid transparent;
+  font-size: calc(0.9vw + 0.9vh);
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #1d4ed8; /* strong blue */
+  color: #e5e7eb;
   cursor: pointer;
-  transition: border-color 0.25s;
-  margin-top: 0.7rem;
+  transition: background-color 0.25s, transform 0.15s;
 
   &:hover {
-    border-color: #646cff;
+    background-color: #2563eb;
+    transform: translateY(-0.3vh);
   }
 `;
 

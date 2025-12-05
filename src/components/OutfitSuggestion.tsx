@@ -5,12 +5,22 @@ import styled from "styled-components";
 import type { User } from "../interfaces/User";
 import type { Weather } from "../interfaces/Weather";
 
+
 const OutfitContainer = styled.section`
-  margin-top: 1.5rem;
+  width: 70vw;
+  max-width: 900px;
+  margin-top: 1.5rem; /* or convert to vh if you want */
+  margin-bottom: 6vh;
+  padding: 3vh 4vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   font-family: cursive, "Arial";
+  font-size: calc(0.9vw + 0.8vh);
+  background-color: rgba(15, 23, 42, 0.9);
+  border-radius: 2vh;
+  box-shadow: 0 0 2vh rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
 `;
 
 type OutfitSuggestionProps = {

@@ -9,13 +9,25 @@ import { mapWeatherCodeToDescription } from "../utils/mapWeatherCode";
 
 
 const WeatherPanelContainer = styled.section`
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: cursive, "Arial";
+  width: 70vw;
+  max-width: 900px;
+  margin-bottom: 4vh;
+  padding: 3vh 4vw;
+  background-color: rgba(15, 23, 42, 0.9);
+  border-radius: 2vh;
+  box-shadow: 0 0 2vh rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  font-size: calc(0.9vw + 0.8vh);
+`;
 
-  
+const WeatherTitle = styled.h2`
+  margin: 0 0 2vh;
+  font-size: calc(1.4vw + 1.2vh);
+  color: #e5e7eb;
+`;
+
+const WeatherLine = styled.p`
+  margin: 0.5vh 0;
 `;
 
 type WeatherPanelProps = {
@@ -34,12 +46,13 @@ function WeatherPanel({ weather }: WeatherPanelProps) {
     const description = mapWeatherCodeToDescription(weather.weather_code);
     return (
         <WeatherPanelContainer>
-            <h2>Boston Weather</h2>
-            <p>Temperature: {weather.temperature_2m} °C</p>
-            <p>Rain: {weather.rain}</p>
-            <p>Condition: {description}</p>
+            <WeatherTitle>Boston Weather</WeatherTitle>
+            <WeatherLine>Temperature: {weather.temperature_2m} °C</WeatherLine>
+            <WeatherLine>Rain: {weather.rain}</WeatherLine>
+            <WeatherLine>Condition: {description}</WeatherLine>
         </WeatherPanelContainer>
     );
+
 }
 
 export default WeatherPanel;
