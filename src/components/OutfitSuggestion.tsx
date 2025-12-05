@@ -11,7 +11,6 @@ const OutfitContainer = styled.section`
   flex-direction: column;
   align-items: center;
   font-family: cursive, "Arial";
-
 `;
 
 type OutfitSuggestionProps = {
@@ -41,6 +40,42 @@ function OutfitSuggestion({ user, weather }: OutfitSuggestionProps) {
     const { preferences, age, gender } = user;
     const temp = weather.temperature_2m;
     const rain = weather.rain;
+
+    // --- 0. Validate age and preferences before doing any work ---
+
+    const numericAge = Number(age);
+    const ageInvalid =
+        Number.isNaN(numericAge) || numericAge <= 1 || numericAge >= 100;
+
+    if (ageInvalid) {
+        return (
+            <OutfitContainer>
+                <h2>Outfit Suggestion</h2>
+                <p>
+                    The age you entered is not valid. Please enter an age between 1 and
+                    100 to get an outfit suggestion.
+                </p>
+            </OutfitContainer>
+        );
+    }
+
+    const hasAnyPreference =
+        preferences.top ||
+        preferences.bottom ||
+        preferences.shoe ||
+        preferences.hat;
+
+    if (!hasAnyPreference) {
+        return (
+            <OutfitContainer>
+                <h2>Outfit Suggestion</h2>
+                <p>
+                    You did not select any clothing items. Please choose at least one (top,
+                    bottom, shoes, or hat) to get a suggestion.
+                </p>
+            </OutfitContainer>
+        );
+    }
 
     // --- 1. Classify temperature into categories ---
     let tempLabel: "freezing" | "cold" | "cool" | "mild" | "warm" | "hot";
@@ -105,28 +140,27 @@ function OutfitSuggestion({ user, weather }: OutfitSuggestionProps) {
 
     // --- 3. Add age & gender context (without changing items too much) ---
 
-    const numericAge = Number(age);
     let ageComment = "";
-    if (!Number.isNaN(numericAge)) {
-        if (numericAge < 18) {
-            ageComment =
-                "Since you're on the younger side, a relaxed and comfortable outfit is perfect for school or going out.";
-        } else if (numericAge < 30) {
-            ageComment =
-                "For your age, a casual everyday style works really well.";
-        } else {
-            ageComment =
-                "A simple, classic combination will look good and keep you comfortable.";
-        }
+    if (numericAge < 18) {
+        ageComment =
+            "Since you're on the younger side, a relaxed and comfortable outfit is perfect for school or going out.";
+    } else if (numericAge < 30) {
+        ageComment = "For your age, a casual everyday style works really well.";
+    } else {
+        ageComment =
+            "A simple, classic combination will look good and keep you comfortable.";
     }
 
     let genderComment = "";
     if (gender) {
-        if (gender.toLowerCase() === "male" || gender.toLowerCase() === "female") {
+        if (
+            gender.toLowerCase() === "male" ||
+            gender.toLowerCase() === "female"
+        ) {
             genderComment = `These pieces are unisex, so you can adapt them to your own ${gender.toLowerCase()} style.`;
-        }
-        else {
-            genderComment = `These pieces are unisex, so you can adapt them to your own style.`;
+        } else {
+            genderComment =
+                "These pieces are unisex, so you can adapt them to your own style.";
         }
     }
 
@@ -140,16 +174,19 @@ function OutfitSuggestion({ user, weather }: OutfitSuggestionProps) {
     } else if (tempLabel === "cool") {
         baseTempText = "It's cool out. A bit of layering will keep you comfortable.";
     } else if (tempLabel === "mild") {
-        baseTempText = "The temperature is mild, so medium-weight clothing is fine.";
+        baseTempText =
+            "The temperature is mild, so medium-weight clothing is fine.";
     } else if (tempLabel === "warm") {
         baseTempText = "It's warm, so lighter clothing will be comfortable.";
     } else {
-        baseTempText = "It's hot, so go for the lightest and most breathable pieces.";
+        baseTempText =
+            "It's hot, so go for the lightest and most breathable pieces.";
     }
 
     let rainText = "";
     if (rain > 0) {
-        rainText = "There is some rain, so prioritize items that can handle getting wet.";
+        rainText =
+            "There is some rain, so prioritize items that can handle getting wet.";
     }
 
     const itemLines: string[] = [];
@@ -162,7 +199,9 @@ function OutfitSuggestion({ user, weather }: OutfitSuggestionProps) {
         <OutfitContainer>
             <h2>Outfit Suggestion</h2>
 
-            <p>{baseTempText} {rainText}</p>
+            <p>
+                {baseTempText} {rainText}
+            </p>
 
             {itemLines.length > 0 && (
                 <ul>
