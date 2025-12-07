@@ -17,10 +17,11 @@ const OutfitContainer = styled.section`
   align-items: flex-start;
   font-family: cursive, "Arial";
   font-size: calc(0.9vw + 0.8vh);
-  background-color: rgba(15, 23, 42, 0.9);
+  background-color: rgba(50, 69, 105, 0.36);
   border-radius: 2vh;
   box-shadow: 0 0 2vh rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
+  color:#1C1C1E;
 `;
 
 type OutfitSuggestionProps = {

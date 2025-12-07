@@ -13,21 +13,24 @@ const WeatherPanelContainer = styled.section`
   max-width: 900px;
   margin-bottom: 4vh;
   padding: 3vh 4vw;
-  background-color: rgba(15, 23, 42, 0.9);
+  background-color: rgba(50, 69, 105, 0.36);
   border-radius: 2vh;
   box-shadow: 0 0 2vh rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   font-size: calc(0.9vw + 0.8vh);
+  color:#1C1C1E;
 `;
 
 const WeatherTitle = styled.h2`
   margin: 0 0 2vh;
   font-size: calc(1.4vw + 1.2vh);
-  color: #e5e7eb;
+  color: #1C1C1E;
 `;
 
 const WeatherLine = styled.p`
   margin: 0.5vh 0;
+  color: #1C1C1E;
+
 `;
 
 type WeatherPanelProps = {

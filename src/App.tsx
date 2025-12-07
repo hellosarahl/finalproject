@@ -21,7 +21,8 @@ const PageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+    background: radial-gradient(circle at top,rgb(232, 238, 247) 0, #BBC8E0 55%);
+  
 `;
 
 
@@ -30,7 +31,7 @@ const Title = styled.h1`
   font-size: calc(3vw + 2vh); /* big and responsive */
   margin: 0 0 3vh;
   text-align: center;
-  color: #bfdbfe; /* light blue for contrast on dark bg */
+  color: #1C1C1E; /* dark text and light background  */
   font-family: "Georgia", "Times New Roman", serif;
 `;
 
