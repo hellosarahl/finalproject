@@ -1,4 +1,4 @@
-
+// src/interfaces/Weather.ts
 export interface User {
     age: string;
     gender: string;

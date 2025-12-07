@@ -7,7 +7,7 @@ import type { Weather } from "../interfaces/Weather";
 import { mapWeatherCodeToDescription } from "../utils/mapWeatherCode";
 
 
-
+// Outer container for the weather card
 const WeatherPanelContainer = styled.section`
   width: 70vw;
   max-width: 900px;
@@ -20,13 +20,13 @@ const WeatherPanelContainer = styled.section`
   font-size: calc(0.9vw + 0.8vh);
   color:#1C1C1E;
 `;
-
+// Title of the weather section
 const WeatherTitle = styled.h2`
   margin: 0 0 2vh;
   font-size: calc(1.4vw + 1.2vh);
   color: #1C1C1E;
 `;
-
+// Single line of weather info
 const WeatherLine = styled.p`
   margin: 0.5vh 0;
   color: #1C1C1E;
@@ -36,7 +36,7 @@ const WeatherLine = styled.p`
 type WeatherPanelProps = {
     weather: Weather | null;
 };
-
+// Renders current Boston weather; shows a prompt when data is missing
 function WeatherPanel({ weather }: WeatherPanelProps) {
     if (!weather) {
         return (

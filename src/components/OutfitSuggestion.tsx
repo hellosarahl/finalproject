@@ -5,6 +5,7 @@ import styled from "styled-components";
 import type { User } from "../interfaces/User";
 import type { Weather } from "../interfaces/Weather";
 
+// Container for the outfit suggestion card
 
 const OutfitContainer = styled.section`
   width: 70vw;
@@ -28,6 +29,7 @@ type OutfitSuggestionProps = {
     user: User | null;
     weather: Weather | null;
 };
+// Builds an outfit recommendation based on user preferences and current weather
 
 function OutfitSuggestion({ user, weather }: OutfitSuggestionProps) {
     if (!user) {
@@ -38,6 +40,7 @@ function OutfitSuggestion({ user, weather }: OutfitSuggestionProps) {
             </OutfitContainer>
         );
     }
+    // Require weather data before suggesting
 
     if (!weather) {
         return (
