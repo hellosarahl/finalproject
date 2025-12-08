@@ -17,7 +17,7 @@ const PageWrapper = styled.div`
     width: 100vw;
     min-height: 100vh;
     box-sizing: border-box;
-    padding: 6vh 6vw;
+    padding: 4vh 3vw;
     display: flex;
     flex-direction: column;
     align-items: center;

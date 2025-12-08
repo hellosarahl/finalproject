@@ -9,14 +9,14 @@ import type { User } from "../interfaces/User";
 
 // Container for the whole form
 const FormContainer = styled.form`
-  width: 70vw;                    /* use most of the width */
-  max-width: 900px;               /* optional safety cap */
+  width: 85vw;                    /* use most of the width */
+  max-width: 1100px;               /* optional safety cap */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1vh;
   padding: 3vh 4vw;
-  margin-bottom: 4vh;
+  margin-bottom: 3vh;
   background-color:  rgba(50, 69, 105, 0.36);
   border-radius: 2vh;
   box-shadow: 0 0 2vh rgba(0, 0, 0, 0.4);
@@ -39,8 +39,8 @@ const FieldLabel = styled.p`
 
 // Text input for age
 const TextInput = styled.input`
-  width: 40vw;
-  max-width: 320px;
+  width: 60vw;
+  max-width: 700px;
   padding: 1vh 1vw;
   background-color: #2A2D32;
   border-radius: 1vh;
@@ -52,8 +52,8 @@ const TextInput = styled.input`
 
 // Select for gender
 const StyledSelect = styled.select`
-  width: 40vw;
-  max-width: 320px;
+  width: 60vw;
+  max-width: 700px;
   padding: 1vh 1vw;
   background-color: #1C1C1E;
   border-radius: 1vh;

@@ -9,9 +9,9 @@ import { mapWeatherCodeToDescription } from "../utils/mapWeatherCode";
 
 // Outer container for the weather card
 const WeatherPanelContainer = styled.section`
-  width: 70vw;
-  max-width: 900px;
-  margin-bottom: 4vh;
+  width: 85vw;
+  max-width: 1100px;
+  margin-bottom: 3vh;
   padding: 3vh 4vw;
   background-color: rgba(50, 69, 105, 0.36);
   border-radius: 2vh;
@@ -19,9 +19,14 @@ const WeatherPanelContainer = styled.section`
   box-sizing: border-box;
   font-size: calc(0.9vw + 0.8vh);
   color:#1C1C1E;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 `;
 // Title of the weather section
 const WeatherTitle = styled.h2`
+    width: 100%;
+    text-align: center;
   margin: 0 0 2vh;
   font-size: calc(1.4vw + 1.2vh);
   color: #1C1C1E;
@@ -38,24 +43,25 @@ type WeatherPanelProps = {
 };
 // Renders current Boston weather; shows a prompt when data is missing
 function WeatherPanel({ weather }: WeatherPanelProps) {
-    if (!weather) {
-        return (
-            <WeatherPanelContainer>
-                <h2>Boston Weather</h2>
-                <p>No weather data yet. Submit the form to load it.</p>
-            </WeatherPanelContainer>
-        );
-    }
-    const description = mapWeatherCodeToDescription(weather.weather_code);
     return (
         <WeatherPanelContainer>
             <WeatherTitle>Boston Weather</WeatherTitle>
-            <WeatherLine>Temperature: {weather.temperature_2m} °C</WeatherLine>
-            <WeatherLine>Rain: {weather.rain}</WeatherLine>
-            <WeatherLine>Condition: {description}</WeatherLine>
+
+            {weather ? (
+                <>
+                    <WeatherLine>Temperature: {weather.temperature_2m} °C</WeatherLine>
+                    <WeatherLine>Rain: {weather.rain}</WeatherLine>
+                    <WeatherLine>
+                        Condition: {mapWeatherCodeToDescription(weather.weather_code)}
+                    </WeatherLine>
+                </>
+            ) : (
+                <WeatherLine>
+                    No weather data yet. Submit the form to load it.
+                </WeatherLine>
+            )}
         </WeatherPanelContainer>
     );
-
 }
 
 export default WeatherPanel;
